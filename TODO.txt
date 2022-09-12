@@ -1,16 +1,10 @@
-TODO
-When lever is pulled, check if they have an active /dial or /nxcomplete meta tagf
-
-do portal blocks calc
-do woosh blocks calc
-
-consider using a global mathematical formulation for block locations relative to NSEW
-
-make iris timings (bukkit scheduler)
-
-do detection for player entering portal
-
-do gate timeout and gate timeout on player leave
-
-Run more things async
+================================
+Known Issues/TODO for NovyXtreme
+================================
+- Config options are minimal currently, this is at the top of the TODO list.
+- All gates are loaded to memory on server start, implement a caching system such that the server only loads the top 100* gates into memory and searches those first    before parsing through the json file (Not sure how effective this will be, needs experimentation)
+- General memory leak issues, probably due to excess static methods and incorrect memory deallocation.(use spark to generate a pre-collection heap summary and use eclipse's MAT tool to analyse potential leaks).
+- Air blocks are still required in the corners for gate creation/validation
+- Overlapping player MetaData tags can sometimes lead to timing out of wrong gate if player activates many in quick succession
+- activating two gates prevents the player from deactivating the first, again due to overlapping player metadata tags (gates will still time out).
 
