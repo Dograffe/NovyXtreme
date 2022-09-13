@@ -11,13 +11,13 @@ public class gateValidation
 {
     public static final Material[][] gateStructure =
             {
-                    {Material.AIR, Material.AIR, Material.OBSIDIAN, Material.OBSIDIAN, Material.OBSIDIAN, Material.AIR, Material.AIR},
-                    {Material.AIR, Material.OBSIDIAN, Material.AIR, Material.AIR, Material.AIR, Material.OBSIDIAN, Material.AIR},
+                    {Material.CAVE_AIR, Material.CAVE_AIR, Material.OBSIDIAN, Material.OBSIDIAN, Material.OBSIDIAN, Material.CAVE_AIR, Material.CAVE_AIR},
+                    {Material.CAVE_AIR, Material.OBSIDIAN, Material.AIR, Material.AIR, Material.AIR, Material.OBSIDIAN, Material.CAVE_AIR},
                     {Material.OBSIDIAN, Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.OBSIDIAN},
                     {Material.OBSIDIAN, Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.OBSIDIAN},
                     {Material.OBSIDIAN, Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.OBSIDIAN},
-                    {Material.AIR, Material.OBSIDIAN, Material.AIR, Material.AIR, Material.AIR, Material.OBSIDIAN, Material.AIR},
-                    {Material.AIR, Material.AIR, Material.OBSIDIAN, Material.OBSIDIAN, Material.OBSIDIAN, Material.AIR, Material.AIR}
+                    {Material.CAVE_AIR, Material.OBSIDIAN, Material.AIR, Material.AIR, Material.AIR, Material.OBSIDIAN, Material.CAVE_AIR},
+                    {Material.CAVE_AIR, Material.CAVE_AIR, Material.OBSIDIAN, Material.OBSIDIAN, Material.OBSIDIAN, Material.CAVE_AIR, Material.CAVE_AIR}
             };
 
     public static Material[][] buildTestGate(Location leverBlock, BlockFace orientation) {
@@ -103,8 +103,13 @@ public class gateValidation
             {
                 if(!gateStructure[y][x].equals(testGate[y][x]))
                 {
-                    isValid = false;
-                    break testingLoop;
+                    //cave air is used as a placeholder, it accepts any block in this position.
+                    if(!gateStructure[y][x].equals(Material.CAVE_AIR))
+                    {
+                        isValid = false;
+                        break testingLoop;
+                    }
+
                 }
             }
         }
