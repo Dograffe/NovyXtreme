@@ -1,0 +1,16 @@
+TODO
+When lever is pulled, check if they have an active /dial or /nxcomplete meta tagf
+
+do portal blocks calc
+do woosh blocks calc
+
+consider using a global mathematical formulation for block locations relative to NSEW
+
+make iris timings (bukkit scheduler)
+
+do detection for player entering portal
+
+do gate timeout and gate timeout on player leave
+
+Run more things async
+

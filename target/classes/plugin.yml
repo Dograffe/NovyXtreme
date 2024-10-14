@@ -1,0 +1,36 @@
+name: NovyXtreme
+version: '1.5'
+main: novyXtreme.NovyXtreme
+depend:
+  - Vault
+  - EconomyPlus
+
+api-version: 1.19
+authors: [ Dograffe ]
+description: Main Project for Stargate Remake
+commands:
+  nxcomplete:
+    description: Create stargate
+    usage: /<command>
+  dial:
+    description: dial a stargate
+    usage: /<command>
+  nxgo:
+    description: sends player to given stargate
+    usage: /<command>
+  nxlist:
+    description: lists all stargates
+    usage: /<command>
+  nxremove:
+    description: removes given stargate
+    usage: /<command>
+  nxreload:
+    description: reloads plugin config and database
+    usage: /<command>
+  nxforce:
+    description: deactivates all active gates
+    usage: /<command>
+
+
+
+
