@@ -9,7 +9,7 @@
     <version>1.5</version>
     <packaging>jar</packaging>
 
-    <name>NovyXtreme2</name>
+    <name>NovyXtreme</name>
 
     <properties>
         <java.version>21</java.version>
