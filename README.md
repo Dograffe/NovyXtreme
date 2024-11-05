@@ -27,3 +27,8 @@
 
 - `/nxreload`  
   Reloads the NovyXtreme plugin.
+
+  ### Planned Features
+  - [ ] Configurable custom gate shapes
+  
+  
