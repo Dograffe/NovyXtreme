@@ -27,5 +27,3 @@
 
 - `/nxreload`  
   Reloads the NovyXtreme plugin.
-
-## Stargate Creation Guide
