@@ -6,7 +6,8 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 
-
+// TODO Instead of 4 Structure arrays, have one which uses placeholders defined outside the structure definition Ie. "IrisBlock", "PortalBlock", "AnyBlock","GateBlock"
+// TODO I'd like to define lever location within the gatestucture, this may require changing the data structure
 public class gateValidation
 {
     public static final Material[][] gateStructure =
@@ -41,14 +42,13 @@ public class gateValidation
             };
 
     public static final Material[] allowedInteriorBlocks = {Material.VINE, Material.CAVE_VINES, Material.NETHER_PORTAL};
-//TODO add a list of blocks which are allowed in the "air" slots; vines etc
+//TODO allow this list of blocks which are allowed in the "air" slots; vines etc
 
     public static Material[][] buildTestGate(Location leverBlock, BlockFace orientation) {
         int xModifier = 1;
         int zModifier = 1;
-        // the leverBlock Location variable is the lever used to activate the stargate - this method is called to check if there is a valid stargate as defined in the 2D array whenever a lever is pulled
-        // Additionally, the lever block is four blocks in front of the stargate and one block above the stargate's lowest block
 
+        // Checks if the leverBlock is part of a valid stargate configuration as specified in the 2D array AND is placed at the correct offset
         Material[][] portalAttempt = new Material[7][7];
         Location testLocation;
         World world = leverBlock.getWorld();
@@ -68,7 +68,7 @@ public class gateValidation
                             testLocation.getBlockY() + i, testLocation.getBlockZ());
                     portalAttempt[i][j] = block.getType();
 
-                    //String debugMessage = String.format("Block at (%d, %d, %d): %s, Direction: %s",
+                    // String debugMessage = String.format("Block at (%d, %d, %d): %s, Direction: %s",
                             //block.getX(), block.getY(), block.getZ(), block.getType().toString(), orientation.toString());
                     //System.out.println(debugMessage);
 
