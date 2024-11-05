@@ -30,5 +30,8 @@
 
   ### Planned Features
   - [ ] Configurable custom gate shapes
+  - [ ] /nxnear find nearby gate(s)
+  - [ ] Ability to "Lock" stargates
+  - [ ] Stargate Networks
   
   
