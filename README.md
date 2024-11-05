@@ -1,6 +1,6 @@
 # NovyXtreme
 
-**NovyXtreme** is a re-make of the classic WormholeXtreme plugin, designed for use on Novylen—the oldest Minecraft server. This plugin allows players to create and use obsidian "Stargates" to teleport between locations across the server.
+**NovyXtreme** is a re-make of the classic WormholeXtreme plugin, designed for use on Novylen - the oldest Minecraft server. This plugin allows players to create and use obsidian "Stargates" to teleport between locations across the server.
 
 ## Features
 
