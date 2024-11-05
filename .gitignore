@@ -1,2 +1,5 @@
 #ignore intellij files
 .idea/
+
+#ignore target directory
+target/
