@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>NovyXtreme2</groupId>
-    <artifactId>NovyXtreme2</artifactId>
+    <groupId>NovyXtreme</groupId>
+    <artifactId>NovyXtreme</artifactId>
     <version>1.5</version>
     <packaging>jar</packaging>
 
