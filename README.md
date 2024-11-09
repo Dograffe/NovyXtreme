@@ -27,6 +27,34 @@
 
 - `/nxreload`  
   Reloads the NovyXtreme plugin.
+  ## Stargate Creation
+  Creating a stargate is easy, first, create this structure in your world
+  - (Note: There is a two block gap between the stargate and the lever pedestal).
+
+  ![stargate-structure](Screenshots/Stargate-Structure-Default.png)
+
+  Next, Pull the lever, you should recieve this message in chat:
+  - (Note: The stargate creation cost is configurable; 0 by default)
+
+  ![stargate-create-message](Screenshots/Stargate-Create-Message.png)
+
+Use the command /nxcomplete [gatename] to create the stargate.
+- If successful, you should see a sign appear on the stargate and receieve this message in chat
+  ![stargate-create-success-message](Screenshots/Stargate-Create-Success-Message.png)
+
+Congratulations! You've made your first stargate.
+
+## Using Stargates
+To activate a stargate, pull the lever, the stargate should "activate":
+- (Note: Activated stargates have a 60 second timeout by default)
+
+![active-stargate](Screenshots/Active-Stargate.png)
+
+use /dial [gatename] to create a portal between this gate and the provided gate.
+
+![connected-stargate](Screenshots/Connected-Stargate.png)
+
+
 
   ### Planned Features
   - [ ] Configurable custom gate shapes
