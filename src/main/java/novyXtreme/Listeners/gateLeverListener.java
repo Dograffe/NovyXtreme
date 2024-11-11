@@ -59,8 +59,5 @@ public class gateLeverListener implements Listener {
             }
 
         }
-        return;
-
-
     }
 }
