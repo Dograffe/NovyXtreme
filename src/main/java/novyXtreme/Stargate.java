@@ -79,14 +79,12 @@ public class Stargate
         Directional signdata = (Directional) sign.getBlockData();
         signdata.setFacing(facing);
         sign.setBlockData(signdata);
-        //Directional leverBlockData = (Directional) leverBlock.getBlockData();
         sign.setLine(1,"-" + name + "-");
         sign.setLine(2,"O:" + owner);
         sign.update(true, true);
     }
     public boolean setActive(boolean active)
     {
-        //original
                 if(active)
                 {
                     for(Location irisBlockLocation : irisBlocks)
@@ -129,7 +127,6 @@ public class Stargate
     public void setPortal(boolean active, Stargate destinationGate)
     {
         World world = this.getLeverBlock().getWorld();
-       //world.spawnParticle(Particle.WATER_DROP, this.getTpCoordinates().add(0,1,0), 600,1,1,1 );
         this.destinationGate = destinationGate;
         activationUtil.activatePortal(this);
         activationUtil.activatePortal(destinationGate);

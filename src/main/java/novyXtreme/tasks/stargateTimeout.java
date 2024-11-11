@@ -3,7 +3,6 @@ package novyXtreme.tasks;
 import novyXtreme.NovyXtreme;
 import novyXtreme.Stargate;
 import novyXtreme.utils.activationUtil;
-import novyXtreme.utils.dbFunctions;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;

@@ -21,6 +21,7 @@ public class gateLeverListener implements Listener {
             return;
         }
         if (e.getClickedBlock().getType() == Material.LEVER) {
+
             Directional leverBlockData = (Directional) leverBlock.getBlockData();
 
             //checks is pedestal is correct
@@ -55,7 +56,6 @@ public class gateLeverListener implements Listener {
                     return;
                 }
                 stargateUtils.promptDial(e.getPlayer(), stargate);
-                return;
             }
 
         }

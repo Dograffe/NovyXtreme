@@ -34,7 +34,7 @@ public class activationUtil
     public static void activatePortal(Stargate stargate)
     {
         if(!stargate.isActive()){stargate.setActive(true);}
-
+        // TODO This would be where to add whoosh effect call.
         World world = stargate.getLeverBlock().getWorld();
         Location[] portalBlocks = stargate.getPortalBlocks();
 
@@ -81,7 +81,9 @@ public class activationUtil
     }
     public static void nxcompleteStart(Block leverblock, Player player)
     {
+        // TODO add configurable nxcomplete timeout
         player.setMetadata("NxCompleteActive", new FixedMetadataValue(NovyXtreme.getPlugin(), leverblock));
+        // Create Gate timeout task to expire in 800 ticks (40 seconds)
         BukkitTask gateTimeout = new nxCompleteTimeout(NovyXtreme.getPlugin(), player).runTaskLater(NovyXtreme.getPlugin(), 800L);
     }
     public static void nxcompleteEnd(Player player)

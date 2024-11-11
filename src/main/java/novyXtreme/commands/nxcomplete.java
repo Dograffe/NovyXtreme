@@ -47,7 +47,7 @@ public class nxcomplete implements CommandExecutor {
             }
             String GateName = args[0];
 
-            //Check gatename is alphanumeric (I'm not dumb enough to forget this and have some kid do a JSON injection and wipe the entire database right?.. RIGHT?
+            //Check gatename is alphanumeric (I'm not dumb enough to forget this and have some kid do a JSON injection and wipe the entire database right?.. RIGHT?)
             if (!GateName.matches("^[a-zA-Z0-9_-]+$")) {
                 p.sendMessage(ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "Gate name can only contain letters, numbers, hyphens, and underscores.");
                 return true;

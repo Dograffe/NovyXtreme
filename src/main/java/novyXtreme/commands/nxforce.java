@@ -18,6 +18,7 @@ public class nxforce implements CommandExecutor {
             sender.sendMessage(ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "You do not have permission to use that command!");
             return true;
         }
+        // TODO Pretty sure this isn't required anymore since the active stargate
         for (Player p : plugin.getServer().getOnlinePlayers()) {
             p.removeMetadata("StargateActive", plugin);
         }
