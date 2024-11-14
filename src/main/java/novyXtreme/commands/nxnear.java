@@ -1,7 +1,8 @@
-/*
-package novygate.commands;
-import novygate.Stargate;
-import novygate.utils.dbFunctions;
+
+package novyXtreme.commands;
+import novyXtreme.Stargate;
+import novyXtreme.utils.dbFunctions;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -12,16 +13,21 @@ public class nxnear implements CommandExecutor
 {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        double closestGate = 0;
-        Player player = (Player) sender;
-        Location playerloc = player.getLocation();
-        for (Stargate stargate : dbFunctions.getStargates())
-        {
-            if(playerloc.distance(stargate.getLeverBlock()) < closestGate)
 
-            stargate.getLeverBlock();
+        double closestGateDistance = 10000000;
+        Stargate closestGateName = null;
+
+        // Get player's current location
+        Player player = (Player) sender;
+        Location playerLocation = player.getLocation();
+
+        for (Stargate stargate : dbFunctions.getAllStargates()) {
+            if (playerLocation.distance(stargate.getTpCoordinates()) < closestGateDistance) {
+                closestGateName = stargate;
+                closestGateDistance = playerLocation.distance(stargate.getTpCoordinates());
+            }
         }
+        sender.sendMessage(ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "The closest stargate: " +"\n Name: "+ closestGateName.getName() + "\n Location: " + closestGateName.getTpCoordinates() + "\n Distance: "+ closestGateDistance + " blocks");
+        return true;
     }
 }
-*/
-//commit test

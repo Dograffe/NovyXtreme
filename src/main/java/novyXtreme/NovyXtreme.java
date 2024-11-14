@@ -37,6 +37,7 @@ public final class NovyXtreme extends JavaPlugin {
         getCommand("dial").setExecutor(new dial());
         getCommand("nxgo").setExecutor(new nxgo());
         getCommand("nxreload").setExecutor(new nxreload());
+        getCommand("nxnear").setExecutor(new nxnear());
         try {
             dbFunctions.loadStargates();
         } catch (IOException e) {

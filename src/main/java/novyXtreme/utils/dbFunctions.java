@@ -28,6 +28,9 @@ public class dbFunctions {
     public static ArrayList<Stargate> activeStargates = new ArrayList<>();
     static int stargateCost = NovyXtreme.getPlugin(NovyXtreme.class).getConfig().getInt("StargateCost");
 
+    public static ArrayList<Stargate> getAllStargates(){
+        return stargates;
+    }
     public static Stargate getActivatedGate(String playername) {
         for (Stargate gate : activeStargates) {
             if (playername.equals(gate.getActivatedby())) {

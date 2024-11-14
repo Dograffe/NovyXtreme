@@ -10,14 +10,18 @@ import org.bukkit.block.data.BlockData;
 import org.bukkit.block.data.Orientable;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitTask;
 
 import javax.annotation.Nullable;
 
 public class activationUtil
 {
+    static Plugin plugin = NovyXtreme.getPlugin(NovyXtreme.class);
+    static long stargateActiveTimeout = plugin.getConfig().getInt("Active-Stargate-Timeout-Ticks");
     public static void activateGate(Stargate stargate, Player player)
     {
+
         if(!stargate.setActive(true))
         {
             player.sendMessage(ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "Gate structure no longer valid.. Please reconstruct and reactivate.");
@@ -28,16 +32,16 @@ public class activationUtil
         player.sendMessage(ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "Stargate Activated!");
        // player.setMetadata("StargateActive", new FixedMetadataValue(NovyXtreme.getPlugin(), stargate.getName()));
         stargate.setActivatedby(player.getName());
-        BukkitTask gateTimeout = new stargateTimeout(NovyXtreme.getPlugin(), stargate, player).runTaskLater(NovyXtreme.getPlugin(), 500L);
+        BukkitTask gateTimeout = new stargateTimeout(NovyXtreme.getPlugin(), stargate, player).runTaskLater(NovyXtreme.getPlugin(), stargateActiveTimeout);
 
     }
     public static void activatePortal(Stargate stargate)
     {
         if(!stargate.isActive()){stargate.setActive(true);}
-        // TODO This would be where to add whoosh effect call.
         World world = stargate.getLeverBlock().getWorld();
         Location[] portalBlocks = stargate.getPortalBlocks();
-
+        //TODO Implement Whoosh
+        //createWhoosh(stargate);
         for(int i = 0; i <portalBlocks.length; i++)
         {
             Block portalBlock = world.getBlockAt(portalBlocks[i]);
@@ -74,6 +78,7 @@ public class activationUtil
                 }catch(NullPointerException e)
                 {
 
+
                 }
             }
         }
@@ -89,5 +94,12 @@ public class activationUtil
     public static void nxcompleteEnd(Player player)
     {
         player.removeMetadata("NxCompleteActive", NovyXtreme.getPlugin());
+    }
+    public static void createWhoosh(Stargate stargate){
+        // TODO Need to allow the player to opt out of whoosh (check for players in radius with player metadata)
+        // Whooshed/partially whooshed blocks should be a function of portal block's width and height and facing direction
+        // TODO create particle effects at gate center
+        //
+
     }
 }

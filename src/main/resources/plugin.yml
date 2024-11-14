@@ -30,6 +30,9 @@ commands:
   nxforce:
     description: deactivates all active gates
     usage: /<command>
+  nxnear:
+    description: Finds the stargate closest to the player
+    usage: /<command>
 
 
 

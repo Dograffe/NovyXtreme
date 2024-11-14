@@ -8,6 +8,57 @@ import org.bukkit.block.BlockFace;
 
 // TODO Instead of 4 Structure arrays, have one which uses placeholders defined outside the structure definition Ie. "IrisBlock", "PortalBlock", "AnyBlock","GateBlock"
 // TODO I'd like to define lever location within the gatestucture, this may require changing the data structure
+/*
+Example of configurable gate structure
+3d char array from config
+KEY:
+- O = Obsidian portal blocks
+- C = Chevron blocks TODO need to rename IRIS to Chevron
+- P = Portal blocks
+- L = Dial Lever Block
+- D = Dial pedestal blocks
+- A = Any blocks
+- W = Whoosh blocks
+how an old school novylen minigate would look in the config file (Each newline is a new layer going from back forwards, declaration enclosed with <[structurename]></>):
+<Minigate>
+[A][A][C][A][A]
+[A][O][P][O][A]
+[A][C][P][C][A]
+[C][O][P][O][C]
+
+[A][A][A][A][A]
+[A][A][A][A][A]
+[A][A][A][L][A]
+[A][A][A][A][A]
+</>
+// get leverblock facing direction. set /Y as +1/-1 +1/+1 -1/+1 -1/-1 depending on direction
+// get leverblock laver height 0 = first etc..
+leverblocklayer = 1
+// start at layer 0
+currentLayer = 0
+layerWidth = length(gatestructure[0][0][])
+layerHeight = length(gatestructure[0][][]
+//calculate top left of lowestlayer (originBlock)
+//currentBlockLocation = getOriginBlockLocationFromLever();
+//nested for loop, height then rows
+for (int z; z<layercount;z++)
+    for (int height;height<layerHeight;x++)
+        for(int y?; y<layerWidth;y++)
+            if(!getBlockFromKey(gatestructure[currentLayer][height][y]) == currentBlockLocation)
+                //fail gate validation
+            else continue
+//successful gate validation
+
+
+for (
+if(
+
+
+
+
+
+ */
+
 public class gateValidation
 {
     public static final Material[][] gateStructure =
