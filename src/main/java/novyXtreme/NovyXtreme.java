@@ -31,6 +31,7 @@ public final class NovyXtreme extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new gateLeverListener(), this);
         getServer().getPluginManager().registerEvents(new portalEnterListener(), this);
         getCommand("nxremove").setExecutor(new nxremove());
+        getCommand("nxtop").setExecutor(new nxtop());
         getCommand("nxforce").setExecutor(new nxforce());
         getCommand("nxlist").setExecutor(new nxlist());
         getCommand("nxcomplete").setExecutor(new nxcomplete());

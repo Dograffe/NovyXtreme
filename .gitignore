@@ -1,6 +1,6 @@
 #ignore intellij files
 .idea/
-NovyXtreme2.iml/
+NovyXtreme.iml
 dependency-reduced-pom.xml
 #ignore target directory
 target/

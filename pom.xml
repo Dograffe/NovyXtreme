@@ -24,7 +24,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
-                    <outputDirectory>yourpath</outputDirectory>
+                    <outputDirectory></outputDirectory>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>

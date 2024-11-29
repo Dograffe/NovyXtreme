@@ -33,6 +33,9 @@ commands:
   nxnear:
     description: Finds the stargate closest to the player
     usage: /<command>
+  nxtop:
+    description: lists stargates ordered by times visited
+    usage: /<command>
 
 
 
