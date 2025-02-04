@@ -28,6 +28,12 @@
 - `/nxreload`  
   Reloads the NovyXtreme plugin.
 
+- '/nxtop'
+  Lists stargates in order of most visited
+
+- '/nxnear'
+  Displays closest startgate to player
+
 
   ## Permissions
   NovyXtreme used permission nodes compatible with Permission plugins such as LuckPerms or PermissionsEx, the following permission nodes are available:
