@@ -2,6 +2,7 @@
 package novyXtreme.commands;
 import novyXtreme.Stargate;
 import novyXtreme.utils.dbFunctions;
+import novyXtreme.utils.stringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -19,15 +20,22 @@ public class nxnear implements CommandExecutor
 
         // Get player's current location
         Player player = (Player) sender;
+        if(player.hasPermission("novyxtreme.nxnear"))
+        {
         Location playerLocation = player.getLocation();
 
         for (Stargate stargate : dbFunctions.getAllStargates()) {
             if (playerLocation.distance(stargate.getTpCoordinates()) < closestGateDistance) {
                 closestGateName = stargate;
                 closestGateDistance = playerLocation.distance(stargate.getTpCoordinates());
+
             }
         }
-        sender.sendMessage(ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "The closest stargate: " +"\n Name: "+ closestGateName.getName() + "\n Location: " + closestGateName.getTpCoordinates() + "\n Distance: "+ closestGateDistance + " blocks");
+        double roundedDistance = Math.round(closestGateDistance);
+        sender.sendMessage(ChatColor.DARK_PURPLE + "[Closest Stargate] " + ChatColor.GRAY + "\n Name: " + closestGateName.getName() + "\n Location: " + stringUtils.locationToCoordString(closestGateName.getTpCoordinates()) + "\n Distance: " + roundedDistance + " blocks");
+
+    } else{sender.sendMessage(ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "You do not have permission to use that command!");}
+
         return true;
     }
 }

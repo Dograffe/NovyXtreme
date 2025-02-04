@@ -9,6 +9,9 @@ import novyXtreme.commands.*;
 import novyXtreme.utils.dbFunctions;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.FileHandler;
 
 import java.io.IOException;
 
@@ -25,6 +28,7 @@ public final class NovyXtreme extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
+
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         getServer().getPluginManager().registerEvents(new portalTeleportListener(), this);

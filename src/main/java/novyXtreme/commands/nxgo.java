@@ -17,7 +17,8 @@ public class nxgo implements CommandExecutor {
                 try {
                     Stargate destinationStargate = dbFunctions.getGatebyName(args[0]);
                     ((Player) sender).teleport(destinationStargate.getTpCoordinates());
-                    destinationStargate.setTimesVisited(destinationStargate.getTimesVisited() + 1);
+                    // disable visit count when using /nxgo
+                    //destinationStargate.setTimesVisited(destinationStargate.getTimesVisited() + 1);
 
                 } catch (NullPointerException e) {
                     sender.sendMessage(ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "No gate by that name found!");
