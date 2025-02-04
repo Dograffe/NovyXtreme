@@ -75,7 +75,7 @@ use /dial [gatename] to create a portal between this gate and the provided gate.
 
   ### Planned Features
   - [ ] Configurable custom gate shapes
-  - [ ] /nxnear find nearby gate(s)
+  - [x] /nxnear find nearby gate(s)
   - [ ] Ability to "Lock" stargates
   - [ ] Stargate Networks
   
