@@ -16,6 +16,7 @@ public class nxgo implements CommandExecutor {
             if (player.hasPermission("novyxtreme.nxgo")) {
                 try {
                     Stargate destinationStargate = dbFunctions.getGatebyName(args[0]);
+                    // temp fix for tp issue, add 1 to facing direction
                     ((Player) sender).teleport(destinationStargate.getTpCoordinates());
                     // disable visit count when using /nxgo
                     //destinationStargate.setTimesVisited(destinationStargate.getTimesVisited() + 1);
