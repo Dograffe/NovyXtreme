@@ -16,9 +16,7 @@ import java.util.logging.FileHandler;
 import java.io.IOException;
 
 public final class NovyXtreme extends JavaPlugin {
-
     private static NovyXtreme plugin;
-
     public static NovyXtreme getPlugin() {
         return plugin;
     }
@@ -28,7 +26,6 @@ public final class NovyXtreme extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
-
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         getServer().getPluginManager().registerEvents(new portalTeleportListener(), this);

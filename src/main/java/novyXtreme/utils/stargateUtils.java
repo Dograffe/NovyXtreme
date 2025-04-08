@@ -27,25 +27,25 @@ public class stargateUtils
        {
            case NORTH:
                teleportBlock = new Location(world, stargate.getLeverBlock().getX(), stargate.getLeverBlock().getY(), stargate.getLeverBlock().getZ());
-               teleportBlock.add(+2.5, 0, +3.5);
+               teleportBlock.add(+2.5, 0, +4.5);
                teleportBlock.setYaw(-180);
                teleportBlock.setPitch(0);
                break;
            case SOUTH:
                teleportBlock = new Location(world, stargate.getLeverBlock().getX(), stargate.getLeverBlock().getY(), stargate.getLeverBlock().getZ());
-               teleportBlock.add(-1.5, 0, -2.5);
+               teleportBlock.add(-1.5, 0, -3.5);
                teleportBlock.setYaw(0);
                teleportBlock.setPitch(0);
                break;
            case EAST:
                teleportBlock = new Location(world, stargate.getLeverBlock().getX(), stargate.getLeverBlock().getY(), stargate.getLeverBlock().getZ());
-               teleportBlock.add(-2.5, 0, +2.5);
+               teleportBlock.add(-3.5, 0, +2.5);
                teleportBlock.setYaw(270);
                teleportBlock.setPitch(0);
                break;
            case WEST:
                teleportBlock = new Location(world, stargate.getLeverBlock().getX(), stargate.getLeverBlock().getY(), stargate.getLeverBlock().getZ());
-               teleportBlock.add(+3.5, 0, -1.5);
+               teleportBlock.add(+4.5, 0, -1.5);
                teleportBlock.setYaw(90);
                teleportBlock.setPitch(0);
                break;

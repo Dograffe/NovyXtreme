@@ -1,5 +1,5 @@
 name: NovyXtreme
-version: '1.5.1'
+version: '1.5.4'
 main: novyXtreme.NovyXtreme
 depend:
   - Vault

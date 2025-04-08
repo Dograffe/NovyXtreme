@@ -1,5 +1,6 @@
 package novyXtreme.Listeners;
 
+import novyXtreme.NovyXtreme;
 import novyXtreme.Stargate;
 import novyXtreme.utils.dbFunctions;
 import org.bukkit.Location;
@@ -15,7 +16,6 @@ import org.bukkit.util.Vector;
 public class portalEnterListener implements Listener {
     @EventHandler
     public void onPortal(EntityPortalEnterEvent event) {
-
         Location origin;
         // Check if portal is part of active stargate.
         Entity entity = event.getEntity();
@@ -26,6 +26,7 @@ public class portalEnterListener implements Listener {
                     origin = new Location(world, event.getLocation().getBlockX(), event.getLocation().getBlockY(), event.getLocation().getBlockZ());
 
                     if (origin.equals(checkBlock)) {
+                        event.setCancelled(true);
                         try {
                             // Set portal cooldown to stop multiple teleport attempts
                             entity.setPortalCooldown(80);
