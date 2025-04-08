@@ -2,13 +2,16 @@ package novyXtreme.Listeners;
 
 import novyXtreme.NovyXtreme;
 import novyXtreme.Stargate;
+import novyXtreme.utils.activationUtil;
 import novyXtreme.utils.dbFunctions;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPortalEnterEvent;
+import org.bukkit.event.entity.EntityTeleportEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.util.Vector;
 
@@ -35,11 +38,20 @@ public class portalEnterListener implements Listener {
                             if (!dest.getWorld().isChunkLoaded(dest.getBlockX() >> 4, dest.getBlockZ() >> 4)) {
                                 dest.getWorld().loadChunk(dest.getBlockX() >> 4, dest.getBlockZ() >> 4);
                             }
-                            entity.teleport(dest, PlayerTeleportEvent.TeleportCause.PLUGIN);
-                            entity.setVelocity(new Vector(0.0, 0.1, 0.0));
+                            if (entity instanceof Player){
+                                Player player = (Player) entity;
+                                NovyXtreme.getPlugin().getLogger().info("Teleporting Player: "+ player.getName() + " to stargate: " + activePortal.getDestinationGate().getName());
+                                player.teleport(dest);
+                                activationUtil.deactivateGate(activePortal, player);
+                                player.setVelocity(new Vector(0.0, 0.2, 0.0));
+                            } else {
+                                entity.teleport(dest);
+                                entity.setVelocity(new Vector(0.0, 0.2, 0.0));
+                            }
+
 
                         } catch (NullPointerException e) {
-                            // TODO add console debug code
+                            // Player is in destination portal
                         }
                         return;
                     }
