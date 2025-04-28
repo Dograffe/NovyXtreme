@@ -1,5 +1,5 @@
 name: NovyXtreme
-version: '1.5'
+version: '1.5.5'
 main: novyXtreme.NovyXtreme
 depend:
   - Vault
@@ -32,6 +32,9 @@ commands:
     usage: /<command>
   nxnear:
     description: Finds the stargate closest to the player
+    usage: /<command>
+  nxtop:
+    description: lists stargates ordered by times visited
     usage: /<command>
 
 

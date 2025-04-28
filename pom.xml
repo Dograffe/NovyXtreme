@@ -6,7 +6,7 @@
 
     <groupId>NovyXtreme</groupId>
     <artifactId>NovyXtreme</artifactId>
-    <version>1.5</version>
+    <version>1.5.5</version>
     <packaging>jar</packaging>
 
     <name>NovyXtreme</name>
@@ -24,7 +24,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
-                    <outputDirectory>yourpath</outputDirectory>
+                    <outputDirectory></outputDirectory>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
