@@ -4,6 +4,7 @@ import novyXtreme.NovyXtreme;
 import novyXtreme.Stargate;
 import novyXtreme.utils.activationUtil;
 import novyXtreme.utils.dbFunctions;
+import novyXtreme.utils.teleportUtils;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
@@ -31,6 +32,7 @@ public class portalEnterListener implements Listener {
                     if (origin.equals(checkBlock)) {
                         event.setCancelled(true);
                         try {
+                            Vector arriveSpeed = new Vector();
                             // Set portal cooldown to stop multiple teleport attempts
                             entity.setPortalCooldown(80);
                             // Teleport player to destination stargate
@@ -43,10 +45,10 @@ public class portalEnterListener implements Listener {
                                 NovyXtreme.getPlugin().getLogger().info("Teleporting Player: "+ player.getName() + " to stargate: " + activePortal.getDestinationGate().getName());
                                 player.teleport(dest);
                                 activationUtil.deactivateGate(activePortal, player);
-                                player.setVelocity(new Vector(0.0, 0.2, 0.0));
+                                player.setVelocity(teleportUtils.getExitPortalVector(activePortal.getDestinationGate().getFacing()));
                             } else {
                                 entity.teleport(dest);
-                                entity.setVelocity(new Vector(0.0, 0.2, 0.0));
+                                entity.setVelocity(teleportUtils.getExitPortalVector(activePortal.getDestinationGate().getFacing()));
                             }
 
 
