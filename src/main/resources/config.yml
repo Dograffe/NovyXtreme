@@ -1,2 +1,3 @@
-StargateCost: 100
-Active-Stargate-Timeout-Ticks: 4000
+StargateCost: 0
+MinimumStargateDistance: 100
+Active-Stargate-Timeout-Ticks: 800

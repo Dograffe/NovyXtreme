@@ -19,33 +19,32 @@ public class stargateUtils
     Plugin plugin = NovyXtreme.getPlugin(NovyXtreme.class);
     int stargateCost = plugin.getConfig().getInt("StargateCost");
 
-    public static Location calcTeleportBlock(Stargate stargate)
-    {
-        Location teleportBlock = null;
-       World world = stargate.getLeverBlock().getWorld();
-       switch(stargate.getGateOrientation())
+    public static Location calcTeleportBlock(Location leverBlock, BlockFace leverBlockOrientation)
+    {Location teleportBlock = null;
+       World world = leverBlock.getWorld();
+       switch(leverBlockOrientation)
        {
            case NORTH:
-               teleportBlock = new Location(world, stargate.getLeverBlock().getX(), stargate.getLeverBlock().getY(), stargate.getLeverBlock().getZ());
-               teleportBlock.add(+2.5, 1, +4.5);
+               teleportBlock = new Location(world, leverBlock.getX(), leverBlock.getY(), leverBlock.getZ());
+               teleportBlock.add(+2.5, 0, +4.5);
                teleportBlock.setYaw(-180);
                teleportBlock.setPitch(0);
                break;
            case SOUTH:
-               teleportBlock = new Location(world, stargate.getLeverBlock().getX(), stargate.getLeverBlock().getY(), stargate.getLeverBlock().getZ());
-               teleportBlock.add(-1.5, 1, -3.5);
+               teleportBlock = new Location(world, leverBlock.getX(), leverBlock.getY(), leverBlock.getZ());
+               teleportBlock.add(-1.5, 0, -3.5);
                teleportBlock.setYaw(0);
                teleportBlock.setPitch(0);
                break;
            case EAST:
-               teleportBlock = new Location(world, stargate.getLeverBlock().getX(), stargate.getLeverBlock().getY(), stargate.getLeverBlock().getZ());
-               teleportBlock.add(-3.5, 1, +2.5);
+               teleportBlock = new Location(world, leverBlock.getX(), leverBlock.getY(), leverBlock.getZ());
+               teleportBlock.add(-3.5, 0, +2.5);
                teleportBlock.setYaw(270);
                teleportBlock.setPitch(0);
                break;
            case WEST:
-               teleportBlock = new Location(world, stargate.getLeverBlock().getX(), stargate.getLeverBlock().getY(), stargate.getLeverBlock().getZ());
-               teleportBlock.add(+4.5, 1, -1.5);
+               teleportBlock = new Location(world, leverBlock.getX(), leverBlock.getY(), leverBlock.getZ());
+               teleportBlock.add(+4.5, 0, -1.5);
                teleportBlock.setYaw(90);
                teleportBlock.setPitch(0);
                break;
@@ -274,5 +273,16 @@ public class stargateUtils
         Block block = location.getBlock();
         BlockState state = block.getState();
         state.update(true, true);
+    }
+    public static Stargate getClosestGate(Location locationToCheck){
+        double closestGateDistance = 10000000;
+        Stargate closestStargate = null;
+        for (Stargate stargate : dbFunctions.getAllStargates()) {
+            if (locationToCheck.distance(stargate.getTpCoordinates()) < closestGateDistance) {
+                closestGateDistance = locationToCheck.distance(stargate.getTpCoordinates());
+                closestStargate = stargate;
+            }
+        }
+        return closestStargate;
     }
 }
