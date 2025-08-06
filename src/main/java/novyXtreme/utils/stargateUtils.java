@@ -278,9 +278,12 @@ public class stargateUtils
         double closestGateDistance = 10000000;
         Stargate closestStargate = null;
         for (Stargate stargate : dbFunctions.getAllStargates()) {
-            if (locationToCheck.distance(stargate.getTpCoordinates()) < closestGateDistance) {
-                closestGateDistance = locationToCheck.distance(stargate.getTpCoordinates());
-                closestStargate = stargate;
+            if (stargate.getTpCoordinates().getWorld() == locationToCheck.getWorld())
+            {
+                if (locationToCheck.distance(stargate.getTpCoordinates()) < closestGateDistance) {
+                    closestGateDistance = locationToCheck.distance(stargate.getTpCoordinates());
+                    closestStargate = stargate;
+                }
             }
         }
         return closestStargate;
