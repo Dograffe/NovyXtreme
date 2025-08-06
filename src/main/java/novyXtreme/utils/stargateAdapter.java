@@ -89,7 +89,7 @@ public class stargateAdapter
                 }
                 stargate.setLeverBlock(jsonToLoc(jObject.get("leverBlock").getAsJsonObject()));
                 stargate.setFacingString(jObject.get("facing").getAsString());
-                stargate.setTpCoordinates(stargateUtils.calcTeleportBlock(stargate));
+                stargate.setTpCoordinates(stargateUtils.calcTeleportBlock(stargate.getLeverBlock(), stargate.getFacing()));
                 stargate.setPortalBlocks(stargateUtils.calcPortalBlocks(stargate.getLeverBlock(), stargate.getFacing()));
                 stargate.setSignBlockLocation(stargateUtils.calcGateSignLocation(stargate.getLeverBlock(), stargate.getGateOrientation()));
                 stargate.setIrisBlocks(stargateUtils.calcIrisBlocks(stargate.getLeverBlock(), stargate.getFacing()));

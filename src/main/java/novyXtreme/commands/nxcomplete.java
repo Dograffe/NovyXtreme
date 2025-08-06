@@ -6,6 +6,7 @@ import novyXtreme.NovyXtreme;
 import novyXtreme.Stargate;
 import novyXtreme.utils.activationUtil;
 import novyXtreme.utils.dbFunctions;
+import novyXtreme.utils.stargateUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Directional;
@@ -15,12 +16,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.plugin.Plugin;
-
+import org.bukkit.Location;
 import java.util.List;
 
 public class nxcomplete implements CommandExecutor {
     Plugin plugin = NovyXtreme.getPlugin(NovyXtreme.class);
     int stargateCost = plugin.getConfig().getInt("StargateCost");
+    double minimumStargateDistance = plugin.getConfig().getDouble("MinimumStargateDistance");
 
 
     @Override
@@ -55,9 +57,16 @@ public class nxcomplete implements CommandExecutor {
 
             //Assign directional interface to leverblock for directional shenanigans
             Directional leverBlockData = (Directional) leverblock.getBlockData();
+            Location teleportBlock = stargateUtils.calcTeleportBlock(leverblock.getLocation(), leverBlockData.getFacing());
+            Stargate closestStargate = stargateUtils.getClosestGate(teleportBlock);
 
             //Stargate does not already exist
             if (dbFunctions.getGatebyName(GateName) == null) {
+                if (closestStargate.getTpCoordinates().distance(teleportBlock) < minimumStargateDistance){
+                    String closestGateName = closestStargate.getName();
+                    p.sendMessage(ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "Stargate is too close to other gate: " + closestGateName);
+                    return true;
+                }
                 Economy economy = NovyXtreme.getEconomy();
                 EconomyResponse response = economy.withdrawPlayer(p, stargateCost);
 
@@ -86,5 +95,6 @@ public class nxcomplete implements CommandExecutor {
         }
         return true;
     }
+
 
 }

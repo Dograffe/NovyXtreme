@@ -32,7 +32,7 @@ public class Stargate
         this.owner = owner;
         this.leverBlock = leverBlock;
         this.facing = facing;
-        this.tpCoordinates = stargateUtils.calcTeleportBlock(this);
+        this.tpCoordinates = stargateUtils.calcTeleportBlock(this.leverBlock, this.facing);
         this.signBlockLocation = stargateUtils.calcGateSignLocation(leverBlock, facing);
         this.irisBlocks = stargateUtils.calcIrisBlocks(leverBlock, facing);
         this.portalBlocks = stargateUtils.calcPortalBlocks(leverBlock, facing);
