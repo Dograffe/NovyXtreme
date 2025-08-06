@@ -15,6 +15,7 @@ import org.bukkit.entity.Player;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import novyXtreme.Stargate;
@@ -53,6 +54,35 @@ public class dbFunctions {
             }
         }
         return null;
+    }
+    public static String getTopGates(Integer page)
+    {
+        // Set page to 1 if no page specified
+        if(page == null){page=1;}
+        int rank =1;
+
+        // sets which rank page should start/end on
+        int pageStart = (page*10)-9;
+        int pageEnd = pageStart+10;
+        Stargate currentGate;
+
+        ArrayList<Stargate> sortedStargates = stargates;
+        // Response Headers
+        String topGatesList = ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY +"Top Stargates" + " (Rank | Name | Owner | Visited)";
+
+            sortedStargates.sort(Comparator.comparingInt(Stargate::getTimesVisited).reversed());
+            for(int i = pageStart;i<pageEnd;i++)
+            {
+                try {
+                    currentGate = sortedStargates.get(i - 1);
+                }catch(IndexOutOfBoundsException e){break;} //exit the loop when index is out of bounds
+
+                topGatesList += "\n"+ChatColor.GREEN + "#" + i + ChatColor.GRAY + " | " + currentGate.getName() + " | " + currentGate.getOwner() + " | " + currentGate.getTimesVisited();
+            }
+            topGatesList += "\n"+"Page: "+page;
+
+
+        return topGatesList;
     }
 
     public static Stargate getGatebyName(String gateName) {
@@ -117,15 +147,15 @@ public class dbFunctions {
         String stargateListString = null;
 
         if (ownerName == null) {
-            stargateListString = ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "Stargates ( Name | Owner | Times Visited | TpCoords";
+            stargateListString = ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "Stargates ( Name | Owner | Times Visited | TpCoords )" ;
             for (Stargate stargate : stargates) {
-                stargateListString = stargateListString + "\n" + ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + stargate.getName() + ChatColor.DARK_GRAY + " | " + ChatColor.GRAY + stargate.getOwner() + ChatColor.DARK_GRAY + " | " + ChatColor.GRAY + stargate.getTimesVisited() + ChatColor.DARK_GRAY + " | " + ChatColor.GRAY + "( " + stargate.getTpCoordinates().getBlockX() + "," + stargate.getTpCoordinates().getBlockY() + "," + stargate.getTpCoordinates().getBlockZ() + " )";
+                stargateListString = stargateListString + "\n"+ChatColor.GRAY + stargate.getName() + ChatColor.DARK_GRAY + " | " + ChatColor.GRAY + stargate.getOwner() + ChatColor.DARK_GRAY + " | " + ChatColor.GRAY + stargate.getTimesVisited() + ChatColor.DARK_GRAY + " | " + ChatColor.GRAY + "( " + stargate.getTpCoordinates().getBlockX() + "," + stargate.getTpCoordinates().getBlockY() + "," + stargate.getTpCoordinates().getBlockZ() + " )";
             }
         } else {
             stargateListString = ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "Stargates Owned by " + ownerName + ":";
             for (Stargate stargate : stargates) {
                 if (stargate.getOwner().equals(ownerName)) {
-                    stargateListString = stargateListString + "\n" + ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "Name: " + stargate.getName();
+                    stargateListString = stargateListString + "\n"+ChatColor.GRAY + "Name: " + stargate.getName();
                 }
             }
         }
@@ -135,7 +165,7 @@ public class dbFunctions {
     public static String getStargateListToString() {
         String stargateListString = ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "Stargates ( Name | Owner )";
         for (Stargate stargate : stargates) {
-            stargateListString = stargateListString + "\n" + ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + stargate.getName() + ChatColor.DARK_GRAY + " | " + ChatColor.GRAY + stargate.getOwner();
+            stargateListString = stargateListString + "\n" + ChatColor.GRAY + stargate.getName() + ChatColor.DARK_GRAY + " | " + ChatColor.GRAY + stargate.getOwner();
         }
         return stargateListString;
     }
@@ -144,7 +174,7 @@ public class dbFunctions {
         String stargateListString = ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "Stargates Owned by " + ownerName + " ( Name | Times Visited | TpCoords )";
         for (Stargate stargate : stargates) {
             if (stargate.getOwner().equals(ownerName)) {
-                stargateListString = stargateListString + "\n" + ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + stargate.getName() + ChatColor.DARK_GRAY + " | " + ChatColor.GRAY + stargate.getTimesVisited() + ChatColor.DARK_GRAY + " | " + ChatColor.GRAY + "( " + stargate.getTpCoordinates().getBlockX() + "," + stargate.getTpCoordinates().getBlockY() + "," + stargate.getTpCoordinates().getBlockZ() + " )";
+                stargateListString = stargateListString + "\n" + ChatColor.GRAY + stargate.getName() + ChatColor.DARK_GRAY + " | " + ChatColor.GRAY + stargate.getTimesVisited() + ChatColor.DARK_GRAY + " | " + ChatColor.GRAY + "( " + stargate.getTpCoordinates().getBlockX() + "," + stargate.getTpCoordinates().getBlockY() + "," + stargate.getTpCoordinates().getBlockZ() + " )";
             }
         }
         return stargateListString;
@@ -154,7 +184,7 @@ public class dbFunctions {
         String stargateListString = ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "Stargates Owned by " + ownerName + ":";
         for (Stargate stargate : stargates) {
             if (stargate.getOwner().equals(ownerName)) {
-                stargateListString = stargateListString + "\n" + ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + ChatColor.GRAY + stargate.getName();
+                stargateListString = stargateListString + "\n" +ChatColor.GRAY + ChatColor.GRAY + stargate.getName();
             }
         }
         return stargateListString;
@@ -204,4 +234,5 @@ public class dbFunctions {
         }
         return true;
     }
+
 }

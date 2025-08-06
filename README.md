@@ -27,6 +27,23 @@
 
 - `/nxreload`  
   Reloads the NovyXtreme plugin.
+
+- '/nxtop'
+  Lists stargates in order of most visited
+
+- '/nxnear'
+  Displays closest startgate to player
+
+
+  ## Permissions
+  NovyXtreme used permission nodes compatible with Permission plugins such as LuckPerms or PermissionsEx, the following permission nodes are available:
+
+ - 'novyxtreme.debug' Allows user to use /nxforce and /nxreload
+ - 'novyxtreme.nxlistall' Allows users to view all stargates with /nxlist (default: only shows command sender's gates)
+ - 'novyxtreme.nxremoveany' Allows the user to remove any stargate (default: only allows removal of command sender's stargates)
+ - 'novyxtreme.nxtop' allows player to user /nxtop command
+ - 'novyxtreme.nxnear' allows player to use /nxnear command
+   
   ## Stargate Creation
   Creating a stargate is easy, first, create this structure in your world
   - (Note: There is a two block gap between the stargate and the lever pedestal).
@@ -58,7 +75,7 @@ use /dial [gatename] to create a portal between this gate and the provided gate.
 
   ### Planned Features
   - [ ] Configurable custom gate shapes
-  - [ ] /nxnear find nearby gate(s)
+  - [x] /nxnear find nearby gate(s)
   - [ ] Ability to "Lock" stargates
   - [ ] Stargate Networks
   

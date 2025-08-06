@@ -9,13 +9,14 @@ import novyXtreme.commands.*;
 import novyXtreme.utils.dbFunctions;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+import java.util.logging.FileHandler;
 
 import java.io.IOException;
 
 public final class NovyXtreme extends JavaPlugin {
-
     private static NovyXtreme plugin;
-
     public static NovyXtreme getPlugin() {
         return plugin;
     }
@@ -31,6 +32,7 @@ public final class NovyXtreme extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new gateLeverListener(), this);
         getServer().getPluginManager().registerEvents(new portalEnterListener(), this);
         getCommand("nxremove").setExecutor(new nxremove());
+        getCommand("nxtop").setExecutor(new nxtop());
         getCommand("nxforce").setExecutor(new nxforce());
         getCommand("nxlist").setExecutor(new nxlist());
         getCommand("nxcomplete").setExecutor(new nxcomplete());
