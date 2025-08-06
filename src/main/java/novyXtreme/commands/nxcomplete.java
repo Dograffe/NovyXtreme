@@ -62,10 +62,12 @@ public class nxcomplete implements CommandExecutor {
 
             //Stargate does not already exist
             if (dbFunctions.getGatebyName(GateName) == null) {
-                if (closestStargate.getTpCoordinates().distance(teleportBlock) < minimumStargateDistance){
-                    String closestGateName = closestStargate.getName();
-                    p.sendMessage(ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "Stargate is too close to other gate: " + closestGateName);
-                    return true;
+                if(closestStargate != null){
+                    if (closestStargate.getTpCoordinates().distance(teleportBlock) < minimumStargateDistance){
+                        String closestGateName = closestStargate.getName();
+                        p.sendMessage(ChatColor.DARK_PURPLE + "[NovyXTreme]: " + ChatColor.GRAY + "Stargate is too close to other gate: " + closestGateName);
+                        return true;
+                    }
                 }
                 Economy economy = NovyXtreme.getEconomy();
                 EconomyResponse response = economy.withdrawPlayer(p, stargateCost);
